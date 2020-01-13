@@ -11,6 +11,7 @@ export class MoviesComponent implements OnInit {
 
   private movies = [];
   public selectedMovie: any;
+  private searchParameters: string;
 
   constructor(private movieService: MovieService) { }
 
@@ -20,9 +21,18 @@ export class MoviesComponent implements OnInit {
 
   getMovies(): void{
     this.movieService.getMovies().subscribe((res : any[])=>{
-      console.log(res);
       this.movies = res['results'];
     }); 
+  }
+
+  searchMovies(): void{
+    if(this.searchParameters.length > 0){
+      this.movieService.searchMovies(this.searchParameters).subscribe((resul : any[])=>{
+        this.movies = resul['results'];
+      }); 
+    } else {
+      this.getMovies();
+    }
   }
 
   selectMovie(movie: any){

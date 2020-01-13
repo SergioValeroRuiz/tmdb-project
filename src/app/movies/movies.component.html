@@ -1,3 +1,8 @@
+<div class="movies-header">
+    <h1 class="header-logo">Movies</h1> 
+    <input class="searchbar" [(ngModel)]="searchParameters" (keyup)="searchMovies()" placeholder="Search"/>
+</div>
+
 <div class="movie-listing">
   <div *ngFor="let movie of movies" class="movie-box" (click)="selectMovie(movie)" [ngStyle]="{ 'background-image': 'url(' + 'https://image.tmdb.org/t/p/w500'+ movie.backdrop_path + ')'}" >
       <div class="movie-inner">
