@@ -1,7 +1,9 @@
 <div class="movie-listing">
-  <div *ngFor="let movie of movies" class="movie-box" [ngStyle]="{ 'background-image': 'url(' + 'https://image.tmdb.org/t/p/w500'+ movie.poster_path + ')'}" >
+  <div *ngFor="let movie of movies" class="movie-box" (click)="selectMovie(movie)" [ngStyle]="{ 'background-image': 'url(' + 'https://image.tmdb.org/t/p/w500'+ movie.backdrop_path + ')'}" >
       <div class="movie-inner">
         <h3 class="movie-name"><span>{{movie.title}}</span></h3>
       </div>
   </div>
 </div>
+
+<app-movie-popup [movie]="selectedMovie"></app-movie-popup>

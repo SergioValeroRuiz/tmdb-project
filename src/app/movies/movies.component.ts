@@ -10,6 +10,7 @@ import{ MovieService } from '../movie.service';
 export class MoviesComponent implements OnInit {
 
   private movies = [];
+  public selectedMovie: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -21,7 +22,11 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe((res : any[])=>{
       console.log(res);
       this.movies = res['results'];
-  }); 
+    }); 
+  }
+
+  selectMovie(movie: any){
+    this.selectedMovie = movie;
   }
 
 }

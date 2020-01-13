@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MoviesComponent } from '../movies/movies.component'
 
 @Component({
   selector: 'app-movie-popup',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviePopupComponent implements OnInit {
 
-  constructor() { }
+  @Input() movie: any;
+
+  constructor(private moviesComponent: MoviesComponent) { }
 
   ngOnInit() {
   }
 
+  closePopup(event){
+    this.movie = null;
+    this.moviesComponent.selectedMovie = null;
+  }
 }
